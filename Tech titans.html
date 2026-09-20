@@ -1,0 +1,4287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AccessAI — Accessibility for Everyone</title>
+
+<style>
+
+/* =====================================================
+   ACCESSAI GLOBAL STYLES
+===================================================== */
+
+:root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #172033;
+    --muted: #657085;
+    --primary: #5b5bf7;
+    --secondary: #00a8a8;
+    --border: #dfe4ee;
+    --shadow: 0 12px 35px rgba(20,30,60,.10);
+    --danger: #e5484d;
+    --success: #19a974;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(91,91,247,.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(0,168,168,.15),
+            transparent 35%
+        ),
+        var(--bg);
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 1050px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background: var(--card);
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 80px rgba(20,30,60,.18);
+}
+
+
+/* LOGIN LEFT */
+
+.login-info {
+    padding: 55px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5b5bf7,
+            #00a8a8
+        );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 28px;
+    font-weight: 900;
+
+    margin-bottom: 40px;
+}
+
+.login-logo-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,.2);
+
+    font-size: 28px;
+}
+
+.login-info h1 {
+    font-size: 48px;
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+.login-info p {
+    font-size: 18px;
+    opacity: .92;
+
+    margin-bottom: 30px;
+}
+
+.login-features {
+    display: grid;
+    gap: 15px;
+}
+
+.login-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-weight: 700;
+}
+
+.login-feature-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.16);
+}
+
+
+/* LOGIN FORM */
+
+.login-form-area {
+    padding: 55px;
+}
+
+.login-form-area h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+
+    padding: 14px 48px 14px 15px;
+
+    border: 2px solid var(--border);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: var(--card);
+    color: var(--text);
+
+    transition: .2s;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(91,91,247,.12);
+}
+
+.input-icon {
+    position: absolute;
+
+    right: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 20px;
+}
+
+.password-toggle {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    font-size: 20px;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 22px;
+
+    font-size: 14px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #5b5bf7,
+        #00a8a8
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    transition: .2s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(91,91,247,.25);
+}
+
+.voice-login-btn {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    border: 2px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    font-weight: 700;
+}
+
+.voice-login-btn:hover {
+    border-color: var(--primary);
+}
+
+.login-note {
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   MAIN WEBSITE
+===================================================== */
+
+#app {
+    display: none;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: rgba(255,255,255,.94);
+
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 14px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: var(--primary);
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5b5bf7,
+            #00a8a8
+        );
+
+    color: white;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 22px;
+}
+
+.nav-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow);
+}
+
+.btn-primary {
+    background: var(--primary);
+
+    color: white;
+
+    border-color: var(--primary);
+}
+
+.btn-danger {
+    background: var(--danger);
+
+    color: white;
+
+    border-color: var(--danger);
+}
+
+
+/* VOICE CONTROLS */
+
+.voice-controls {
+    display: flex;
+
+    gap: 5px;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.voice-controls .btn {
+    padding: 8px 11px;
+
+    font-size: 13px;
+}
+
+
+/* USER DISPLAY */
+
+.user-display {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 12px;
+
+    border-radius: 10px;
+
+    background: #f0f1ff;
+
+    font-weight: 700;
+
+    color: var(--primary);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 80px 20px 60px;
+
+    display: grid;
+
+    grid-template-columns: 1.3fr .7fr;
+
+    gap: 50px;
+
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+
+    background: #e9e9ff;
+
+    color: var(--primary);
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    font-weight: 800;
+
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(40px,6vw,72px);
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+}
+
+.gradient-text {
+    background:
+        linear-gradient(
+            90deg,
+            #5b5bf7,
+            #00a8a8
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+.hero p {
+    font-size: 19px;
+
+    color: var(--muted);
+
+    max-width: 700px;
+
+    margin-bottom: 28px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+/* AI ORB */
+
+.ai-orb-area {
+    display: grid;
+
+    place-items: center;
+}
+
+.ai-orb {
+    width: 270px;
+    height: 270px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            white,
+            transparent 15%
+        ),
+        linear-gradient(
+            135deg,
+            #5b5bf7,
+            #00a8a8
+        );
+
+    box-shadow:
+        0 0 0 20px rgba(91,91,247,.08),
+        0 0 0 45px rgba(0,168,168,.05),
+        0 30px 80px rgba(30,50,100,.25);
+
+    display: grid;
+
+    place-items: center;
+
+    color: white;
+
+    font-size: 70px;
+
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section {
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 70px 20px;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   ACCESSIBILITY CARDS
+===================================================== */
+
+.accessibility-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 18px;
+}
+
+.access-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+    box-shadow: var(--shadow);
+
+    transition: .25s;
+}
+
+.access-card:hover {
+    transform: translateY(-5px);
+}
+
+.access-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 14px;
+
+    background: #eeeeff;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 25px;
+
+    margin-bottom: 16px;
+}
+
+.access-card h3 {
+    margin-bottom: 8px;
+}
+
+.access-card p {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    margin-bottom: 16px;
+}
+
+.toggle {
+    width: 52px;
+    height: 28px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: #cdd3df;
+
+    position: relative;
+}
+
+.toggle::after {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    top: 3px;
+    left: 4px;
+
+    transition: .2s;
+}
+
+.toggle.active {
+    background: var(--primary);
+}
+
+.toggle.active::after {
+    left: 26px;
+}
+
+
+/* =====================================================
+   SCANNER
+===================================================== */
+
+.scanner {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    box-shadow: var(--shadow);
+}
+
+.scanner-input {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+.scanner-input input {
+    flex: 1;
+
+    padding: 15px;
+
+    border: 2px solid var(--border);
+
+    border-radius: 12px;
+
+    outline: none;
+}
+
+.scanner-input input:focus {
+    border-color: var(--primary);
+}
+
+.scan-result {
+    display: none;
+}
+
+/* =====================================================
+   DOCUMENT READER
+===================================================== */
+
+.document-reader {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.file-drop-zone {
+    border: 2px dashed var(--primary);
+    border-radius: 16px;
+    padding: 32px 20px;
+    text-align: center;
+    background: #f5f5ff;
+    transition: .2s;
+}
+
+.file-drop-zone.dragging {
+    background: #e5ffff;
+    transform: scale(1.01);
+}
+
+.file-drop-zone p {
+    color: var(--muted);
+    margin: 8px 0 16px;
+}
+
+.file-types {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.document-output {
+    display: none;
+    margin-top: 24px;
+}
+
+.document-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 14px;
+    color: var(--muted);
+}
+
+.document-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.document-text {
+    max-height: 440px;
+    overflow: auto;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--bg);
+    white-space: pre-wrap;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.document-text.large-document-text {
+    font-size: 22px;
+    line-height: 1.9;
+}
+
+.spoken-word {
+    background: #fff08a;
+    color: #172033;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px rgba(255, 211, 0, .35);
+}
+
+body.dark .file-drop-zone {
+    background: #25253e;
+}
+
+.accessibility-corner {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 4000;
+}
+
+.corner-trigger {
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 25px;
+    box-shadow: 0 10px 28px rgba(91,91,247,.35);
+}
+
+.corner-panel {
+    display: none;
+    width: 235px;
+    margin-bottom: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.corner-panel.open {
+    display: grid;
+    gap: 8px;
+}
+
+.corner-panel h3 {
+    font-size: 15px;
+    margin: 0 0 2px;
+}
+
+.corner-panel .btn {
+    width: 100%;
+    text-align: left;
+}
+
+/* =====================================================
+   LIVE CAPTIONS
+===================================================== */
+
+.live-caption {
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 4500;
+    width: min(680px, calc(100% - 150px));
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: rgba(23, 25, 39, .96);
+    color: white;
+    box-shadow: 0 12px 35px rgba(0,0,0,.28);
+    font-size: 17px;
+    line-height: 1.45;
+}
+
+.live-caption.active {
+    display: block;
+}
+
+.caption-label {
+    display: block;
+    margin-bottom: 3px;
+    color: #9ee7e7;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+@media(max-width:650px) {
+
+    .live-caption {
+        bottom: 92px;
+        width: calc(100% - 32px);
+        font-size: 15px;
+    }
+}
+
+.score-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.score {
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 12px solid #e5e8f0;
+
+    font-size: 30px;
+
+    font-weight: 900;
+}
+
+.issue {
+    padding: 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    margin-bottom: 12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+.issue strong {
+    display: block;
+}
+
+.issue small {
+    color: var(--muted);
+}
+
+.ai-fix {
+    background: #f0f0ff;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-top: 20px;
+}
+
+.ai-fix code {
+    display: block;
+
+    background: #171927;
+
+    color: #fff;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    margin: 15px 0;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 18px;
+}
+
+.stat {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 36px;
+
+    color: var(--primary);
+}
+
+.stat p {
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   PLAYGROUND
+===================================================== */
+
+.playground {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.demo-box {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+    box-shadow: var(--shadow);
+}
+
+.demo-box h3 {
+    margin-bottom: 20px;
+}
+
+.demo-nav {
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+    flex-wrap: wrap;
+}
+
+.demo-nav a {
+    font-weight: 700;
+
+    color: var(--primary);
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 2px solid var(--border);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: var(--card);
+
+    color: var(--text);
+}
+
+.form-group textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background: #151927;
+
+    color: white;
+
+    padding: 45px 20px;
+
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1250px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.footer-content p {
+    color: #b5bdd0;
+
+    margin-top: 10px;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast {
+    position: fixed;
+
+    bottom: 25px;
+
+    right: 25px;
+
+    background: #171927;
+
+    color: white;
+
+    padding: 15px 20px;
+
+    border-radius: 12px;
+
+    transform: translateY(100px);
+
+    opacity: 0;
+
+    transition: .3s;
+
+    z-index: 5000;
+}
+
+.toast.show {
+    transform: translateY(0);
+
+    opacity: 1;
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark {
+    --bg: #10131c;
+
+    --card: #191e2b;
+
+    --text: #f5f7ff;
+
+    --muted: #aeb7ca;
+
+    --border: #303749;
+}
+
+body.dark header {
+    background: rgba(16,19,28,.95);
+}
+
+body.dark .badge {
+    background: #292955;
+}
+
+body.dark .access-icon {
+    background: #292955;
+}
+
+body.dark .ai-fix {
+    background: #25253e;
+}
+
+body.dark .user-display {
+    background: #25253e;
+}
+
+
+/* =====================================================
+   HIGH CONTRAST
+===================================================== */
+
+body.high-contrast {
+    --bg: #000;
+
+    --card: #000;
+
+    --text: #fff;
+
+    --muted: #fff;
+
+    --border: #fff;
+
+    --primary: #ffff00;
+}
+
+body.high-contrast .gradient-text {
+    color: #ffff00;
+
+    background: none;
+}
+
+
+/* =====================================================
+   LARGE TEXT
+===================================================== */
+
+body.large-text {
+    font-size: 120%;
+}
+
+
+/* =====================================================
+   EASY READING
+===================================================== */
+
+body.easy-reading {
+    letter-spacing: .06em;
+
+    word-spacing: .12em;
+
+    line-height: 2;
+}
+
+
+/* =====================================================
+   LARGE CURSOR
+===================================================== */
+
+body.large-cursor,
+body.large-cursor * {
+    cursor:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M4 2l34 25-15 2 9 15-7 4-9-16-9 10z' fill='white' stroke='black' stroke-width='3'/%3E%3C/svg%3E"),
+        auto !important;
+}
+
+
+/* =====================================================
+   FOCUS MODE
+===================================================== */
+
+body.focus-mode main > section:not(.focus-active) {
+    opacity: .25;
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+
+    animation: none !important;
+
+    transition: none !important;
+
+    scroll-behavior: auto !important;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:950px) {
+
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .login-info {
+        padding: 40px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .accessibility-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .playground {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-orb {
+        width: 210px;
+        height: 210px;
+    }
+}
+
+
+@media(max-width:650px) {
+
+    .login-info {
+        padding: 30px;
+    }
+
+    .login-info h1 {
+        font-size: 36px;
+    }
+
+    .login-form-area {
+        padding: 30px;
+    }
+
+    .navbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .nav-actions {
+        width: 100%;
+    }
+
+    .voice-controls {
+        width: 100%;
+    }
+
+    .voice-controls .btn {
+        flex: 1;
+    }
+
+    .accessibility-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .scanner-input {
+        flex-direction: column;
+    }
+
+    .score-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .issue {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .user-display {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
+
+<section id="loginPage">
+
+    <div class="login-wrapper">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-info">
+
+            <div class="login-logo">
+
+                <div class="login-logo-icon">
+                    ♿
+                </div>
+
+                AccessAI
+
+            </div>
+
+
+            <h1>
+                Accessibility
+                for Everyone.
+            </h1>
+
+
+            <p>
+                An AI-powered accessibility platform
+                designed to make digital experiences
+                easier for everyone.
+            </p>
+
+
+            <div class="login-features">
+
+                <div class="login-feature">
+
+                    <div class="login-feature-icon">
+                        🔊
+                    </div>
+
+                    AI Voice Assistance
+
+                </div>
+
+
+                <div class="login-feature">
+
+                    <div class="login-feature-icon">
+                        👁️
+                    </div>
+
+                    Visual Accessibility
+
+                </div>
+
+
+                <div class="login-feature">
+
+                    <div class="login-feature-icon">
+                        ⌨️
+                    </div>
+
+                    Keyboard Friendly
+
+                </div>
+
+
+                <div class="login-feature">
+
+                    <div class="login-feature-icon">
+                        🤖
+                    </div>
+
+                    AI Accessibility Audit
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <div class="login-form-area">
+
+            <h2>
+                Welcome to AccessAI
+            </h2>
+
+            <p class="login-subtitle">
+                Enter your information to continue.
+            </p>
+
+
+            <form
+                id="loginForm"
+                onsubmit="loginUser(event)"
+                autocomplete="on">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="loginName">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            id="loginName"
+                            type="text"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            required>
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="loginEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            id="loginEmail"
+                            type="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required>
+
+                        <span class="input-icon">
+                            📧
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            id="loginPassword"
+                            type="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                            minlength="4">
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword()"
+                            aria-label="Show or hide password">
+
+                            👁️
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONS -->
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe">
+
+                        Remember me
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        class="btn"
+                        onclick="forgotPassword()">
+
+                        Forgot Password?
+
+                    </button>
+
+                </div>
+
+
+                <!-- LOGIN -->
+
+                <button
+                    type="submit"
+                    class="login-btn">
+
+                    🚀 Enter AccessAI
+
+                </button>
+
+
+            </form>
+
+
+            <!-- VOICE LOGIN -->
+
+            <button
+                class="voice-login-btn"
+                onclick="voiceLogin()">
+
+                🎤 Use Voice to Fill Information
+
+            </button>
+
+
+            <p class="login-note">
+
+                Your information is used only for this
+                frontend demonstration.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACCESSAI APPLICATION
+===================================================== -->
+
+<div id="app">
+
+
+<header>
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            ♿
+        </div>
+
+        AccessAI
+
+    </div>
+
+
+    <div class="nav-actions">
+
+
+        <!-- USER -->
+
+        <div
+            class="user-display"
+            id="userDisplay">
+
+            👤 User
+
+        </div>
+
+
+        <!-- VOICE CONTROLS -->
+
+        <div class="voice-controls">
+
+
+            <button
+                class="btn btn-primary"
+                onclick="readPage()">
+
+                🔊 Read Page
+
+            </button>
+
+
+            <button
+                class="btn"
+                onclick="pauseVoice()">
+
+                ⏸️ Pause
+
+            </button>
+
+
+            <button
+                class="btn"
+                onclick="resumeVoice()">
+
+                ▶️ Resume
+
+            </button>
+
+
+            <button
+                class="btn btn-danger"
+                onclick="stopVoice()">
+
+                ⏹️ Stop
+
+            </button>
+
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="startVoice()">
+
+            🎤 Voice
+
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="toggleTheme()">
+
+            🌙 Theme
+
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="logoutUser()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>
+
+</header>
+
+
+
+<main id="main">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <div>
+
+        <span class="badge">
+            🚀 Tech for a Better Tomorrow
+        </span>
+
+
+        <h1>
+
+            Hello,
+            <span
+                class="gradient-text"
+                id="welcomeName">
+
+                User
+
+            </span>
+
+            👋
+
+            <br>
+
+            Accessibility
+            Powered by AI
+
+        </h1>
+
+
+        <p>
+
+            AccessAI helps people with visual,
+            hearing, motor, and cognitive
+            disabilities use digital experiences
+            more easily.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+            <button
+                class="btn btn-primary"
+                onclick="document.getElementById('scanner').scrollIntoView()">
+
+                🔍 Start Accessibility Audit
+
+            </button>
+
+
+            <button
+                class="btn"
+                onclick="startVoice()">
+
+                🎤 Talk to AccessAI
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="ai-orb-area">
+
+        <div
+            class="ai-orb"
+            role="img"
+            aria-label="AccessAI voice assistant">
+
+            🤖
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACCESSIBILITY CONTROLS
+===================================================== -->
+
+<section class="section">
+
+
+    <div class="section-title">
+
+        <h2>
+            Make Websites Work For Everyone
+        </h2>
+
+        <p>
+            Turn accessibility features on or off instantly.
+        </p>
+
+    </div>
+
+
+    <div class="accessibility-grid">
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                🌓
+            </div>
+
+            <h3>
+                High Contrast
+            </h3>
+
+            <p>
+                Improves visibility for users with low vision.
+            </p>
+
+            <button
+                class="toggle"
+                id="contrastToggle"
+                onclick="toggleAccessibility('contrast')">
+
+            </button>
+
+        </div>
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                🔠
+            </div>
+
+            <h3>
+                Large Text
+            </h3>
+
+            <p>
+                Increase text size for easier reading.
+            </p>
+
+            <button
+                class="toggle"
+                id="textToggle"
+                onclick="toggleAccessibility('large-text')">
+
+            </button>
+
+        </div>
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                📖
+            </div>
+
+            <h3>
+                Easy Reading
+            </h3>
+
+            <p>
+                Adds spacing and improves reading comfort.
+            </p>
+
+            <button
+                class="toggle"
+                id="readingToggle"
+                onclick="toggleAccessibility('easy-reading')">
+
+            </button>
+
+        </div>
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                🖱️
+            </div>
+
+            <h3>
+                Large Cursor
+            </h3>
+
+            <p>
+                Makes the mouse pointer easier to see.
+            </p>
+
+            <button
+                class="toggle"
+                id="cursorToggle"
+                onclick="toggleAccessibility('large-cursor')">
+
+            </button>
+
+        </div>
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                🧘
+            </div>
+
+            <h3>
+                Reduce Motion
+            </h3>
+
+            <p>
+                Reduces animations for sensitive users.
+            </p>
+
+            <button
+                class="toggle"
+                id="motionToggle"
+                onclick="toggleAccessibility('reduce-motion')">
+
+            </button>
+
+        </div>
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                🎯
+            </div>
+
+            <h3>
+                Focus Mode
+            </h3>
+
+            <p>
+                Reduces distractions on the page.
+            </p>
+
+            <button
+                class="toggle"
+                id="focusToggle"
+                onclick="toggleFocusMode()">
+
+            </button>
+
+        </div>
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                🔊
+            </div>
+
+            <h3>
+                Read Selected
+            </h3>
+
+            <p>
+                Select any text and have AccessAI read it aloud.
+            </p>
+
+            <button
+                class="btn btn-primary"
+                onclick="readSelectedText()">
+
+                Read Selection
+
+            </button>
+
+        </div>
+
+
+        <div class="access-card">
+
+            <div class="access-icon">
+                ⌨️
+            </div>
+
+            <h3>
+                Keyboard Help
+            </h3>
+
+            <p>
+                Use keyboard shortcuts to control AccessAI.
+            </p>
+
+            <button
+                class="btn"
+                onclick="showKeyboardHelp()">
+
+                View Shortcuts
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCANNER
+===================================================== -->
+
+<section
+    class="section"
+    id="scanner">
+
+
+    <div class="section-title">
+
+        <h2>
+            AI Accessibility Scanner
+        </h2>
+
+        <p>
+            Enter a website address to simulate an accessibility audit.
+        </p>
+
+    </div>
+
+
+    <div class="scanner">
+
+
+        <div class="scanner-input">
+
+
+            <input
+                type="url"
+                id="websiteUrl"
+                placeholder="https://example.com"
+                aria-label="Website URL">
+
+
+            <button
+                class="btn btn-primary"
+                onclick="runScan()">
+
+                🔍 Scan Website
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="scan-result"
+            id="scanResult">
+
+
+            <div class="score-box">
+
+
+                <div
+                    class="score"
+                    id="score">
+
+                    0
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Accessibility Score
+                    </h3>
+
+                    <p id="scoreMessage">
+                        Analyzing website...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <h3 style="margin-bottom:15px;">
+                Detected Issues
+            </h3>
+
+
+            <div id="issues"></div>
+
+
+            <div class="ai-fix">
+
+                <h3>
+                    🤖 AI Suggested Fix
+                </h3>
+
+                <p>
+                    Example automatically generated accessibility improvement:
+                </p>
+
+                <code id="aiCode">
+
+                    &lt;img
+                    src="hero.jpg"
+                    alt="Description of image"&gt;
+
+                </code>
+
+
+                <button
+                    class="btn btn-primary"
+                    onclick="copyFix()">
+
+                    📋 Copy Fix
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DOCUMENT IMPORT
+===================================================== -->
+
+<section class="section" id="documentReader">
+
+    <div class="section-title">
+
+        <h2>Open a File From Your Device</h2>
+
+        <p>Read a document privately, make its text bigger, or view a simpler version.</p>
+
+    </div>
+
+    <div class="document-reader">
+
+        <div class="file-drop-zone" id="fileDropZone">
+
+            <div class="access-icon" style="margin:0 auto 12px;">📄</div>
+
+            <h3>Import a document</h3>
+
+            <p>Drop a file here or choose one from your device.</p>
+
+            <input id="documentFile" type="file" accept=".txt,.md,.csv,.json,.html,.htm" hidden>
+
+            <button class="btn btn-primary" type="button" onclick="document.getElementById('documentFile').click()">Choose file</button>
+
+            <span class="file-types">Supported: TXT, Markdown, CSV, JSON, and HTML (up to 3 MB). Files are processed only in this browser.</span>
+
+        </div>
+
+        <div class="document-output" id="documentOutput" aria-live="polite">
+
+            <div class="document-meta">
+
+                <strong id="documentName">Your document</strong>
+
+                <span id="documentDetails"></span>
+
+            </div>
+
+            <div class="document-actions" aria-label="Document accessibility options">
+
+                <button class="btn btn-primary" type="button" onclick="readImportedText()">🔊 Read text</button>
+
+                <button class="btn" type="button" onclick="toggleDocumentTextSize()">🔠 Bigger text</button>
+
+                <button class="btn" type="button" onclick="explainImportedText()">✨ Explain simply</button>
+
+            </div>
+
+            <div class="document-text" id="documentText" tabindex="0"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="section">
+
+
+    <div class="section-title">
+
+        <h2>
+            Why Accessibility Matters
+        </h2>
+
+    </div>
+
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <h3>
+                1B+
+            </h3>
+
+            <p>
+                People worldwide live with disabilities
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>
+                70%
+            </h3>
+
+            <p>
+                Accessibility problems can be automated
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>
+                24/7
+            </h3>
+
+            <p>
+                AI assistance can be available
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>
+                ∞
+            </h3>
+
+            <p>
+                Possibilities for inclusive technology
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PLAYGROUND
+===================================================== -->
+
+<section class="section">
+
+
+    <div class="section-title">
+
+        <h2>
+            Accessible Website Playground
+        </h2>
+
+        <p>
+            Try an interface designed using accessibility principles.
+        </p>
+
+    </div>
+
+
+    <div class="playground">
+
+
+        <div class="demo-box">
+
+            <h3>
+                Navigation
+            </h3>
+
+
+            <nav
+                class="demo-nav"
+                aria-label="Demo navigation">
+
+                <a
+                    href="#"
+                    onclick="demoNavigation(event,'Home')">
+
+                    Home
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="demoNavigation(event,'About')">
+
+                    About
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="demoNavigation(event,'Services')">
+
+                    Services
+
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="demoNavigation(event,'Contact')">
+
+                    Contact
+
+                </a>
+
+            </nav>
+
+
+            <p id="demoNavigationMessage">
+
+                Choose a navigation item.
+
+            </p>
+
+        </div>
+
+
+        <div class="demo-box">
+
+            <h3>
+                Accessible Contact Form
+            </h3>
+
+
+            <form
+                onsubmit="submitDemo(event)">
+
+
+                <div class="form-group">
+
+                    <label for="demoName">
+                        Your Name
+                    </label>
+
+                    <input
+                        id="demoName"
+                        type="text"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="demoEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        id="demoEmail"
+                        type="email"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="demoMessage">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="demoMessage"
+                        required>
+                    </textarea>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    type="submit">
+
+                    Send Message
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            ♿ AccessAI
+        </h2>
+
+        <p>
+            Technology that makes the digital world more accessible.
+        </p>
+
+        <p>
+            Built for the Tech for a Better Tomorrow challenge.
+        </p>
+
+    </div>
+
+</footer>
+
+</div>
+
+
+
+<!-- DOCUMENT ACCESSIBILITY CORNER -->
+
+<aside class="accessibility-corner" aria-label="Document accessibility tools">
+
+    <div class="corner-panel" id="cornerPanel">
+
+        <h3>Document tools</h3>
+
+        <button class="btn" type="button" onclick="readImportedText()">🔊 Read text</button>
+
+        <button class="btn" type="button" onclick="toggleDocumentTextSize()">🔠 Bigger text</button>
+
+        <button class="btn" type="button" onclick="explainImportedText()">✨ Explain simply</button>
+
+    </div>
+
+    <button class="corner-trigger" id="cornerTrigger" type="button" aria-label="Open document accessibility tools" aria-expanded="false" aria-controls="cornerPanel" onclick="toggleCornerPanel()">♿</button>
+
+</aside>
+
+
+
+<!-- LIVE SPEECH CAPTIONS -->
+
+<div class="live-caption" id="liveCaption" role="status" aria-live="assertive" aria-atomic="true">
+
+    <span class="caption-label">Live caption</span>
+
+    <span id="captionText"></span>
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite">
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   LOGIN SYSTEM
+===================================================== */
+
+let currentUser = {
+    name: "",
+    email: ""
+};
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function loginUser(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "loginName"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "loginEmail"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+
+    if (!name) {
+
+        speak(
+            "Please enter your name."
+        );
+
+        return;
+    }
+
+
+    if (!email) {
+
+        speak(
+            "Please enter your email address."
+        );
+
+        return;
+    }
+
+
+    if (!password) {
+
+        speak(
+            "Please enter your password."
+        );
+
+        return;
+    }
+
+
+    currentUser.name = name;
+
+    currentUser.email = email;
+
+
+    /* SHOW APP */
+
+    document.getElementById(
+        "loginPage"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "app"
+    ).style.display = "block";
+
+
+    /* UPDATE USER INFORMATION */
+
+    document.getElementById(
+        "welcomeName"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "userDisplay"
+    ).textContent =
+        "👤 " + name;
+
+
+    showToast(
+        "Welcome to AccessAI, " +
+        name +
+        "!"
+    );
+
+
+    /* VOICE WELCOME */
+
+    setTimeout(
+        function() {
+
+            speak(
+                "Welcome to AccessAI, " +
+                name +
+                ". You are now inside the accessibility dashboard. You can say read page, pause, resume, stop, high contrast, large text, or dark mode."
+            );
+
+        },
+        700
+    );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutUser() {
+
+    stopVoice();
+
+
+    document.getElementById(
+        "app"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "loginPage"
+    ).style.display = "flex";
+
+
+    document.getElementById(
+        "loginPassword"
+    ).value = "";
+
+
+    showToast(
+        "You have been logged out."
+    );
+
+}
+
+
+/* =====================================================
+   PASSWORD VISIBILITY
+===================================================== */
+
+function togglePassword() {
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        );
+
+
+    if (
+        password.type === "password"
+    ) {
+
+        password.type = "text";
+
+    } else {
+
+        password.type = "password";
+
+    }
+
+}
+
+
+/* =====================================================
+   FORGOT PASSWORD DEMO
+===================================================== */
+
+function forgotPassword() {
+
+    speak(
+        "For this prototype, password recovery is not connected to a server."
+    );
+
+    alert(
+        "Password recovery would be connected to your authentication backend in the production version."
+    );
+
+}
+
+
+/* =====================================================
+   VOICE LOGIN
+===================================================== */
+
+function voiceLogin() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
+    if (!SpeechRecognition) {
+
+        alert(
+            "Voice recognition is not supported in this browser. Please use Google Chrome or Microsoft Edge."
+        );
+
+        return;
+    }
+
+
+    const recognition =
+        new SpeechRecognition();
+
+
+    recognition.lang = "en-US";
+
+    recognition.interimResults = false;
+
+    recognition.continuous = false;
+
+
+    speak(
+        "Voice login activated. Please say your name."
+    );
+
+
+    setTimeout(
+        function() {
+
+            recognition.start();
+
+        },
+        2500
+    );
+
+
+    recognition.onresult =
+        function(event) {
+
+            const result =
+                event.results[0][0].transcript;
+
+
+            document.getElementById(
+                "loginName"
+            ).value = result;
+
+
+            speak(
+                "I entered your name as " +
+                result +
+                ". Please enter your email and password."
+            );
+
+
+            document.getElementById(
+                "loginEmail"
+            ).focus();
+
+        };
+
+
+    recognition.onerror =
+        function() {
+
+            showToast(
+                "Voice input could not be completed."
+            );
+
+        };
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+
+    setTimeout(
+        function() {
+
+            toast.classList.remove("show");
+
+        },
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   SPEECH SYNTHESIS
+===================================================== */
+
+let speechQueue = "";
+let captionText = "";
+let liveCaptionSession = 0;
+
+
+function startLiveCaption(text) {
+
+    liveCaptionSession += 1;
+    captionText = text;
+    document.getElementById("liveCaption").classList.add("active");
+    updateLiveCaption(0);
+    return liveCaptionSession;
+}
+
+
+function updateLiveCaption(characterIndex) {
+
+    if (!captionText) return;
+
+    const startAt = Math.max(
+        0,
+        captionText.lastIndexOf(".", characterIndex - 1) + 1,
+        captionText.lastIndexOf("!", characterIndex - 1) + 1,
+        captionText.lastIndexOf("?", characterIndex - 1) + 1,
+        captionText.lastIndexOf("\n", characterIndex - 1) + 1
+    );
+
+    let caption = captionText.slice(startAt).trim();
+    const sentenceEnd = caption.search(/[.!?](\s|$)/);
+
+    if (sentenceEnd >= 0) {
+        caption = caption.slice(0, sentenceEnd + 1);
+    }
+
+    if (caption.length > 180) {
+        caption = caption.slice(0, 177).trim() + "...";
+    }
+
+    document.getElementById("captionText").textContent = caption;
+}
+
+
+function stopLiveCaption(session) {
+
+    if (session && session !== liveCaptionSession) return;
+
+    captionText = "";
+    document.getElementById("liveCaption").classList.remove("active");
+    document.getElementById("captionText").textContent = "";
+}
+
+
+function splitIntoSentences(text) {
+
+    const sentences = [];
+    const pattern = /[^.!?\n]+[.!?]*|[\n]+/g;
+    let match;
+
+    while ((match = pattern.exec(text)) !== null) {
+        const sentence = match[0].trim();
+
+        if (sentence) {
+            sentences.push({
+                text: sentence,
+                start: match.index + match[0].indexOf(sentence)
+            });
+        }
+    }
+
+    return sentences.length ? sentences : [{ text: text, start: 0 }];
+}
+
+
+function speakWithSentenceCaptions(text, onWord, onComplete) {
+
+    const sentences = splitIntoSentences(text);
+    const session = ++liveCaptionSession;
+    let sentenceIndex = 0;
+
+    function speakNextSentence() {
+
+        if (session !== liveCaptionSession) return;
+
+        if (sentenceIndex >= sentences.length) {
+            stopLiveCaption(session);
+            if (onComplete) onComplete();
+            return;
+        }
+
+        const currentSentence = sentences[sentenceIndex];
+
+        captionText = currentSentence.text;
+        document.getElementById("captionText").textContent = currentSentence.text;
+        document.getElementById("liveCaption").classList.add("active");
+
+        const utterance = new SpeechSynthesisUtterance(currentSentence.text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+
+        utterance.onboundary = function(event) {
+            if (event.name === "word" && onWord) {
+                onWord(currentSentence.start + event.charIndex);
+            }
+        };
+
+        utterance.onend = function() {
+            if (session !== liveCaptionSession) return;
+            sentenceIndex += 1;
+            speakNextSentence();
+        };
+
+        utterance.onerror = function() {
+            stopLiveCaption(session);
+            if (onComplete) onComplete();
+        };
+
+        speechSynthesis.speak(utterance);
+    }
+
+    speakNextSentence();
+}
+
+
+function speak(text) {
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        showToast(
+            "Speech synthesis is not supported."
+        );
+
+        return;
+    }
+
+
+    speechSynthesis.cancel();
+    clearDocumentHighlight();
+    speechQueue = text;
+    speakWithSentenceCaptions(text);
+
+}
+
+
+/* =====================================================
+   READ PAGE
+===================================================== */
+
+function readPage() {
+
+    const main =
+        document.getElementById(
+            "main"
+        );
+
+
+    if (!main) return;
+
+
+    const text =
+        main.innerText
+        .replace(/\s+/g, " ")
+        .trim();
+
+
+    speechQueue =
+        text.substring(
+            0,
+            7000
+        );
+
+
+    speak(
+        speechQueue
+    );
+
+
+    showToast(
+        "🔊 Reading page..."
+    );
+
+}
+
+
+/* =====================================================
+   PAUSE
+===================================================== */
+
+function pauseVoice() {
+
+    if (
+        speechSynthesis.speaking &&
+        !speechSynthesis.paused
+    ) {
+
+        speechSynthesis.pause();
+
+
+        showToast(
+            "⏸️ Voice paused"
+        );
+
+    } else {
+
+        showToast(
+            "Voice is not currently playing."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   RESUME
+===================================================== */
+
+function resumeVoice() {
+
+    if (
+        speechSynthesis.paused
+    ) {
+
+        speechSynthesis.resume();
+
+
+        showToast(
+            "▶️ Voice resumed"
+        );
+
+    } else {
+
+        showToast(
+            "Voice is not paused."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   STOP
+===================================================== */
+
+function stopVoice() {
+
+    speechSynthesis.cancel();
+    clearDocumentHighlight();
+    stopLiveCaption();
+
+
+    showToast(
+        "⏹️ Voice stopped"
+    );
+
+}
+
+
+/* =====================================================
+   READ SELECTED TEXT
+===================================================== */
+
+function readSelectedText() {
+
+    const selected =
+        window.getSelection()
+        .toString()
+        .trim();
+
+
+    if (!selected) {
+
+        showToast(
+            "Please select text first."
+        );
+
+        return;
+    }
+
+
+    speak(
+        selected
+    );
+
+}
+
+
+/* =====================================================
+   DEVICE FILE IMPORT AND DOCUMENT TOOLS
+===================================================== */
+
+let importedDocumentText = "";
+let showingSimpleText = false;
+let activeDocumentWord = null;
+
+
+function initializeDocumentImport() {
+
+    const input = document.getElementById("documentFile");
+    const dropZone = document.getElementById("fileDropZone");
+
+    input.addEventListener("change", function(event) {
+        loadDocumentFile(event.target.files[0]);
+    });
+
+    ["dragenter", "dragover"].forEach(function(eventName) {
+        dropZone.addEventListener(eventName, function(event) {
+            event.preventDefault();
+            dropZone.classList.add("dragging");
+        });
+    });
+
+    ["dragleave", "drop"].forEach(function(eventName) {
+        dropZone.addEventListener(eventName, function(event) {
+            event.preventDefault();
+            dropZone.classList.remove("dragging");
+        });
+    });
+
+    dropZone.addEventListener("drop", function(event) {
+        loadDocumentFile(event.dataTransfer.files[0]);
+    });
+}
+
+
+function loadDocumentFile(file) {
+
+    if (!file) return;
+
+    const supportedTypes = /\.(txt|md|csv|json|html?|htm)$/i;
+
+    if (!supportedTypes.test(file.name)) {
+        showToast("Choose a TXT, Markdown, CSV, JSON, or HTML file.");
+        return;
+    }
+
+    if (file.size > 3 * 1024 * 1024) {
+        showToast("Please choose a file smaller than 3 MB.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        let text = String(event.target.result || "");
+
+        if (/\.html?$/i.test(file.name)) {
+            const parsed = new DOMParser().parseFromString(text, "text/html");
+            text = parsed.body.innerText;
+        }
+
+        importedDocumentText = text.replace(/\r\n/g, "\n").trim();
+        showingSimpleText = false;
+        clearDocumentHighlight();
+
+        if (!importedDocumentText) {
+            showToast("That file does not contain readable text.");
+            return;
+        }
+
+        document.getElementById("documentName").textContent = "📄 " + file.name;
+        document.getElementById("documentDetails").textContent = Math.ceil(file.size / 1024) + " KB · ready to read";
+        document.getElementById("documentText").textContent = importedDocumentText;
+        document.getElementById("documentOutput").style.display = "block";
+        document.getElementById("documentReader").scrollIntoView({ behavior: "smooth", block: "center" });
+        showToast("Document imported. Open the accessibility button for reading tools.");
+    };
+
+    reader.onerror = function() {
+        showToast("We could not read that file.");
+    };
+
+    reader.readAsText(file);
+}
+
+
+function toggleCornerPanel() {
+
+    const panel = document.getElementById("cornerPanel");
+    const trigger = document.getElementById("cornerTrigger");
+    const open = panel.classList.toggle("open");
+
+    trigger.setAttribute("aria-expanded", open);
+    trigger.setAttribute("aria-label", open ? "Close document accessibility tools" : "Open document accessibility tools");
+}
+
+
+function requireImportedText() {
+
+    if (importedDocumentText) return true;
+
+    showToast("Import a document first, then use these tools.");
+    document.getElementById("documentReader").scrollIntoView({ behavior: "smooth", block: "center" });
+    return false;
+}
+
+
+function readImportedText() {
+
+    if (!requireImportedText()) return;
+
+    const visibleText = document.getElementById("documentText").textContent.substring(0, 7000);
+    const output = document.getElementById("documentText");
+
+    if (!("speechSynthesis" in window)) {
+        showToast("Speech synthesis is not supported.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+    clearDocumentHighlight();
+    renderDocumentWords(visibleText);
+    speechQueue = visibleText;
+    speakWithSentenceCaptions(visibleText, highlightDocumentWord, clearDocumentHighlight);
+    output.focus({ preventScroll: true });
+    showToast("🔊 Reading your document...");
+}
+
+
+function renderDocumentWords(text) {
+
+    const output = document.getElementById("documentText");
+    const fragment = document.createDocumentFragment();
+    let position = 0;
+
+    text.match(/\S+|\s+/g).forEach(function(part) {
+        if (/^\s+$/.test(part)) {
+            fragment.appendChild(document.createTextNode(part));
+        } else {
+            const word = document.createElement("span");
+            word.className = "document-word";
+            word.dataset.start = position;
+            word.textContent = part;
+            fragment.appendChild(word);
+        }
+
+        position += part.length;
+    });
+
+    output.replaceChildren(fragment);
+}
+
+
+function highlightDocumentWord(characterIndex) {
+
+    const output = document.getElementById("documentText");
+    const words = output.querySelectorAll(".document-word");
+    let nextWord = null;
+
+    words.forEach(function(word) {
+        const start = Number(word.dataset.start);
+        const end = start + word.textContent.length;
+
+        if (characterIndex >= start && characterIndex < end) {
+            nextWord = word;
+        }
+    });
+
+    if (!nextWord) return;
+
+    clearDocumentHighlight();
+    nextWord.classList.add("spoken-word");
+    activeDocumentWord = nextWord;
+    nextWord.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+
+function clearDocumentHighlight() {
+
+    if (activeDocumentWord) {
+        activeDocumentWord.classList.remove("spoken-word");
+        activeDocumentWord = null;
+    }
+}
+
+
+function toggleDocumentTextSize() {
+
+    if (!requireImportedText()) return;
+
+    const text = document.getElementById("documentText");
+    const isLarge = text.classList.toggle("large-document-text");
+    showToast(isLarge ? "Bigger document text enabled" : "Normal document text restored");
+}
+
+
+function explainImportedText() {
+
+    if (!requireImportedText()) return;
+
+    const output = document.getElementById("documentText");
+
+    if (showingSimpleText) {
+        speechSynthesis.cancel();
+        clearDocumentHighlight();
+        output.textContent = importedDocumentText;
+        showingSimpleText = false;
+        showToast("Showing the original document");
+        return;
+    }
+
+    const replacements = {
+        "utilize": "use",
+        "approximately": "about",
+        "assistance": "help",
+        "commence": "start",
+        "demonstrate": "show",
+        "individuals": "people",
+        "numerous": "many",
+        "purchase": "buy",
+        "subsequent": "next",
+        "therefore": "so"
+    };
+
+    let simpleText = importedDocumentText;
+
+    Object.keys(replacements).forEach(function(word) {
+        simpleText = simpleText.replace(new RegExp("\\b" + word + "\\b", "gi"), replacements[word]);
+    });
+
+    simpleText = simpleText
+        .replace(/;\s*/g, ". ")
+        .replace(/\s{2,}/g, " ")
+        .replace(/\.\s+/g, ".\n\n");
+
+    speechSynthesis.cancel();
+    clearDocumentHighlight();
+    output.textContent = "Simple reading view:\n\n" + simpleText;
+    showingSimpleText = true;
+    showToast("Simple reading view ready. Select Explain simply again to restore the original.");
+}
+
+
+document.addEventListener("DOMContentLoaded", initializeDocumentImport);
+
+
+/* =====================================================
+   VOICE ASSISTANT
+===================================================== */
+
+function startVoice() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
+    if (!SpeechRecognition) {
+
+        showToast(
+            "Voice recognition is not supported."
+        );
+
+        return;
+    }
+
+
+    const recognition =
+        new SpeechRecognition();
+
+
+    recognition.lang = "en-US";
+
+    recognition.interimResults = false;
+
+    recognition.continuous = false;
+
+
+    recognition.onstart =
+        function() {
+
+            showToast(
+                "🎤 Listening..."
+            );
+
+        };
+
+
+    recognition.onresult =
+        function(event) {
+
+            const command =
+                event.results[0][0]
+                .transcript
+                .toLowerCase();
+
+
+            processVoiceCommand(
+                command
+            );
+
+        };
+
+
+    recognition.onerror =
+        function() {
+
+            showToast(
+                "Could not understand your voice."
+            );
+
+        };
+
+
+    recognition.start();
+
+}
+
+
+/* =====================================================
+   VOICE COMMANDS
+===================================================== */
+
+function processVoiceCommand(
+    command
+) {
+
+
+    if (
+        command.includes("read")
+    ) {
+
+        readPage();
+
+        return;
+    }
+
+
+    if (
+        command.includes("pause")
+    ) {
+
+        pauseVoice();
+
+        return;
+    }
+
+
+    if (
+        command.includes("resume") ||
+        command.includes("continue")
+    ) {
+
+        resumeVoice();
+
+        return;
+    }
+
+
+    if (
+        command.includes("stop")
+    ) {
+
+        stopVoice();
+
+        return;
+    }
+
+
+    if (
+        command.includes("scan") ||
+        command.includes("audit")
+    ) {
+
+        document
+            .getElementById(
+                "scanner"
+            )
+            .scrollIntoView();
+
+
+        speak(
+            "Opening the accessibility scanner."
+        );
+
+        return;
+    }
+
+
+    if (
+        command.includes("contrast")
+    ) {
+
+        if (
+            !document.body
+                .classList
+                .contains(
+                    "high-contrast"
+                )
+        ) {
+
+            toggleAccessibility(
+                "contrast"
+            );
+
+        }
+
+        speak(
+            "High contrast enabled."
+        );
+
+        return;
+    }
+
+
+    if (
+        command.includes("large text") ||
+        command.includes("bigger text")
+    ) {
+
+        if (
+            !document.body
+                .classList
+                .contains(
+                    "large-text"
+                )
+        ) {
+
+            toggleAccessibility(
+                "large-text"
+            );
+
+        }
+
+        speak(
+            "Large text enabled."
+        );
+
+        return;
+    }
+
+
+    if (
+        command.includes("cursor")
+    ) {
+
+        if (
+            !document.body
+                .classList
+                .contains(
+                    "large-cursor"
+                )
+        ) {
+
+            toggleAccessibility(
+                "large-cursor"
+            );
+
+        }
+
+        speak(
+            "Large cursor enabled."
+        );
+
+        return;
+    }
+
+
+    if (
+        command.includes("dark mode")
+    ) {
+
+        if (
+            !document.body
+                .classList
+                .contains(
+                    "dark"
+                )
+        ) {
+
+            toggleTheme();
+
+        }
+
+        speak(
+            "Dark mode enabled."
+        );
+
+        return;
+    }
+
+
+    if (
+        command.includes("light mode")
+    ) {
+
+        if (
+            document.body
+                .classList
+                .contains(
+                    "dark"
+                )
+        ) {
+
+            toggleTheme();
+
+        }
+
+        speak(
+            "Light mode enabled."
+        );
+
+        return;
+    }
+
+
+    if (
+        command.includes("help")
+    ) {
+
+        showKeyboardHelp();
+
+        return;
+    }
+
+
+    speak(
+        "I heard " +
+        command +
+        ". Try saying read page, pause, resume, stop, scan website, high contrast, large text, dark mode, or help."
+    );
+
+}
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+function toggleTheme() {
+
+    document.body
+        .classList
+        .toggle("dark");
+
+
+    const isDark =
+        document.body
+            .classList
+            .contains("dark");
+
+
+    localStorage.setItem(
+        "accessai-dark",
+        isDark
+    );
+
+
+    showToast(
+        isDark
+            ? "Dark mode enabled"
+            : "Light mode enabled"
+    );
+
+}
+
+
+if (
+    localStorage.getItem(
+        "accessai-dark"
+    ) === "true"
+) {
+
+    document.body
+        .classList
+        .add("dark");
+
+}
+
+
+/* =====================================================
+   ACCESSIBILITY TOGGLES
+===================================================== */
+
+function toggleAccessibility(
+    type
+) {
+
+    document.body
+        .classList
+        .toggle(type);
+
+
+    const active =
+        document.body
+            .classList
+            .contains(type);
+
+
+    let buttonId = "";
+
+
+    if (type === "contrast")
+        buttonId = "contrastToggle";
+
+
+    if (type === "large-text")
+        buttonId = "textToggle";
+
+
+    if (type === "easy-reading")
+        buttonId = "readingToggle";
+
+
+    if (type === "large-cursor")
+        buttonId = "cursorToggle";
+
+
+    if (type === "reduce-motion")
+        buttonId = "motionToggle";
+
+
+    const button =
+        document.getElementById(
+            buttonId
+        );
+
+
+    if (button) {
+
+        button.classList.toggle(
+            "active",
+            active
+        );
+
+    }
+
+
+    showToast(
+        active
+            ? type.replace("-", " ") +
+              " enabled"
+            : type.replace("-", " ") +
+              " disabled"
+    );
+
+}
+
+
+/* =====================================================
+   FOCUS MODE
+===================================================== */
+
+function toggleFocusMode() {
+
+    document.body
+        .classList
+        .toggle("focus-mode");
+
+
+    const button =
+        document.getElementById(
+            "focusToggle"
+        );
+
+
+    button.classList.toggle(
+        "active",
+        document.body
+            .classList
+            .contains("focus-mode")
+    );
+
+
+    showToast(
+        document.body
+            .classList
+            .contains("focus-mode")
+            ? "Focus mode enabled"
+            : "Focus mode disabled"
+    );
+
+}
+
+
+/* =====================================================
+   SCANNER
+===================================================== */
+
+function runScan() {
+
+    const url =
+        document.getElementById(
+            "websiteUrl"
+        ).value.trim();
+
+
+    if (!url) {
+
+        showToast(
+            "Please enter a website URL."
+        );
+
+        return;
+    }
+
+
+    document.getElementById(
+        "scanResult"
+    ).style.display = "block";
+
+
+    const score =
+        Math.floor(
+            Math.random() * 26
+        ) + 65;
+
+
+    document.getElementById(
+        "score"
+    ).textContent = score;
+
+
+    document.getElementById(
+        "scoreMessage"
+    ).textContent =
+        "Accessibility audit completed for " +
+        url;
+
+
+    const issues = [
+
+        [
+            "Missing image alternative text",
+            "Some images may not have meaningful alt text."
+        ],
+
+        [
+            "Low color contrast",
+            "Some text may not have enough contrast."
+        ],
+
+        [
+            "Form labels",
+            "Some input fields may need explicit labels."
+        ],
+
+        [
+            "Keyboard navigation",
+            "Some interactive elements may need keyboard support."
+        ]
+
+    ];
+
+
+    const container =
+        document.getElementById(
+            "issues"
+        );
+
+
+    container.innerHTML = "";
+
+
+    issues.forEach(
+        function(issue) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "issue";
+
+
+            div.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        ⚠️ ${issue[0]}
+                    </strong>
+
+                    <small>
+                        ${issue[1]}
+                    </small>
+
+                </div>
+
+                <button
+                    class="btn"
+                    onclick="speak('${issue[0]}')">
+
+                    🔊 Read
+
+                </button>
+
+            `;
+
+
+            container.appendChild(
+                div
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "aiCode"
+    ).textContent =
+        `<img src="hero.jpg" alt="Accessible hero image describing the main feature">`;
+
+
+    showToast(
+        "✅ Accessibility audit completed."
+    );
+
+}
+
+
+/* =====================================================
+   COPY FIX
+===================================================== */
+
+function copyFix() {
+
+    const code =
+        document.getElementById(
+            "aiCode"
+        ).textContent;
+
+
+    navigator.clipboard
+        .writeText(code)
+        .then(
+            function() {
+
+                showToast(
+                    "📋 AI fix copied!"
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   KEYBOARD HELP
+===================================================== */
+
+function showKeyboardHelp() {
+
+    alert(`
+AccessAI Keyboard Shortcuts
+
+Alt + V  → Voice Assistant
+Alt + R  → Read Page
+Alt + C  → High Contrast
+Alt + L  → Large Text
+
+Voice Commands:
+
+"Read page"
+"Pause"
+"Resume"
+"Stop"
+"Scan website"
+"High contrast"
+"Large text"
+"Large cursor"
+"Dark mode"
+"Light mode"
+"Help"
+`);
+
+}
+
+
+/* =====================================================
+   KEYBOARD SHORTCUTS
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (
+            event.altKey &&
+            event.key.toLowerCase() === "v"
+        ) {
+
+            event.preventDefault();
+
+            startVoice();
+
+        }
+
+
+        if (
+            event.altKey &&
+            event.key.toLowerCase() === "r"
+        ) {
+
+            event.preventDefault();
+
+            readPage();
+
+        }
+
+
+        if (
+            event.altKey &&
+            event.key.toLowerCase() === "c"
+        ) {
+
+            event.preventDefault();
+
+            toggleAccessibility(
+                "contrast"
+            );
+
+        }
+
+
+        if (
+            event.altKey &&
+            event.key.toLowerCase() === "l"
+        ) {
+
+            event.preventDefault();
+
+            toggleAccessibility(
+                "large-text"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DEMO NAVIGATION
+===================================================== */
+
+function demoNavigation(
+    event,
+    name
+) {
+
+    event.preventDefault();
+
+
+    document.getElementById(
+        "demoNavigationMessage"
+    ).textContent =
+        "You selected " +
+        name +
+        ".";
+
+
+    speak(
+        "You selected " +
+        name
+    );
+
+}
+
+
+/* =====================================================
+   DEMO FORM
+===================================================== */
+
+function submitDemo(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "demoName"
+        ).value;
+
+
+    showToast(
+        "Thank you, " +
+        name +
+        "! Your message was submitted."
+    );
+
+
+    speak(
+        "Thank you " +
+        name +
+        ". Your message was submitted successfully."
+    );
+
+}
+
+</script>
+
+</body>
+</html>
